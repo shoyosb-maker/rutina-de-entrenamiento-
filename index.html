@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Isa 🎉 · Rutina Glúteo & Pierna</title>
+<style>
+:root{
+  --bg:#0b0810; --card:#161022; --card2:#1d1530; --line:#2c2142;
+  --txt:#efe9f8; --muted:#a294c0;
+  --pink:#ff2e88; --purple:#8b5cf6; --ok:#2ee6a8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  color:var(--txt); min-height:100vh; padding-bottom:130px;
+  background:
+    radial-gradient(900px 520px at 8% -10%, #330f4a 0%, transparent 60%),
+    radial-gradient(800px 520px at 110% 5%, #101f3f 0%, transparent 55%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* =========================================================
+   INTRO DE CUMPLEAÑOS
+   ========================================================= */
+.intro{
+  position:fixed; inset:0; z-index:999;
+  display:grid; place-items:center;
+  background:radial-gradient(ellipse at 50% 0%, #3a0f4a 0%, #12081e 55%, #07040d 100%);
+  overflow:hidden; text-align:center; padding:24px;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+.intro.hide{opacity:0; visibility:hidden}
+#fw{
+  position:absolute; inset:0; width:100%; height:100%;
+  pointer-events:none;
+}
+.confetti-layer{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1}
+.confetti{
+  position:absolute; top:-24px; border-radius:2px; opacity:.9;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-24px) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(720deg)}
+}
+
+/* Pompones */
+.pompoms{position:absolute; inset:0; pointer-events:none; z-index:1}
+.pompom{
+  position:absolute; width:70px; height:70px; border-radius:50%;
+}
+.pompom::after{
+  content:""; position:absolute; inset:-14px; border-radius:50%;
+  background:repeating-conic-gradient(from 0deg, transparent 0 10deg, rgba(255,255,255,.16) 10deg 13deg);
+  animation:spin 3.5s linear infinite;
+}
+.pompom--l{
+  left:6%; top:30%;
+  background:radial-gradient(circle at 40% 35%, #ffb3d1, #ff2e88 65%);
+  box-shadow:0 0 40px 8px rgba(255,46,136,.45);
+  animation:cheerL .6s ease-in-out infinite alternate;
+}
+.pompom--r{
+  right:6%; top:55%;
+  background:radial-gradient(circle at 40% 35%, #d6c4ff, #8b5cf6 65%);
+  box-shadow:0 0 40px 8px rgba(139,92,246,.45);
+  animation:cheerR .7s ease-in-out infinite alternate;
+}
+@keyframes cheerL{
+  from{transform:translateY(0) rotate(-12deg)}
+  to{transform:translateY(-18px) rotate(6deg)}
+}
+@keyframes cheerR{
+  from{transform:translateY(-16px) rotate(10deg)}
+  to{transform:translateY(2px) rotate(-8deg)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.intro__content{
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+  max-width:660px;
+}
+.intro__kicker{
+  font-size:.82rem; letter-spacing:2.5px; text-transform:uppercase;
+  color:#ff8fc0; font-weight:800;
+}
+.intro__title{
+  font-size:clamp(2.2rem, 7.5vw, 4.8rem);
+  line-height:1.02; font-weight:900; letter-spacing:-.02em;
+  background:linear-gradient(90deg,#ff2e88,#ffb3d1,#8b5cf6,#ff2e88);
+  background-size:300% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{
+  0%{background-position:0% 50%}
+  100%{background-position:300% 50%}
+}
+.intro__sub{color:#c9bbe6; font-size:1rem; max-width:420px; line-height:1.5}
+.intro__btn{
+  font-family:inherit; font-size:1.05rem; font-weight:800;
+  padding:16px 34px; border-radius:99px; border:none; cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#ff2e88,#8b5cf6);
+  box-shadow:0 12px 40px -10px #ff2e88, 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.intro__btn:hover{transform:translateY(-2px) scale(1.03); box-shadow:0 18px 50px -10px #ff2e88}
+.intro__btn:active{transform:scale(.97)}
+
+@media(max-width:600px){
+  .pompom{width:46px; height:46px}
+  .pompom--l{left:1%; top:20%}
+  .pompom--r{right:1%; top:62%}
+}
+
+/* =========================================================
+   RESTO DE LA RUTINA
+   ========================================================= */
+.top{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(11,8,16,.78);
+  border-bottom:1px solid var(--line);
+}
+.top__in{
+  max-width:1120px; margin:0 auto; padding:14px 18px;
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;
+}
+.brand{display:flex; align-items:center; gap:12px}
+.brand__ico{
+  font-size:26px; line-height:1;
+  width:48px; height:48px; display:grid; place-items:center;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  box-shadow:0 8px 24px -8px var(--pink);
+}
+.brand h1{font-size:1.05rem; letter-spacing:.2px}
+.brand p{font-size:.74rem; color:var(--muted); margin-top:2px}
+.progress{display:flex; align-items:center; gap:10px; min-width:250px; flex:1; max-width:420px}
+.progress__bar{
+  flex:1; height:9px; border-radius:99px; background:#241a38;
+  overflow:hidden; border:1px solid var(--line);
+}
+.progress__bar i{
+  display:block; height:100%; width:0%; border-radius:99px;
+  background:linear-gradient(90deg,var(--pink),var(--purple));
+  transition:width .35s ease;
+}
+.progress span{font-size:.76rem; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums}
+.btn-ghost{
+  background:#1e1630; border:1px solid var(--line); color:var(--muted);
+  width:34px; height:34px; border-radius:10px; cursor:pointer; font-size:1rem;
+  transition:.2s;
+}
+.btn-ghost:hover{color:var(--txt); border-color:var(--pink)}
+
+.wrap{max-width:1120px; margin:0 auto; padding:26px 18px}
+
+.cards{display:grid; grid-template-columns:1fr; gap:24px; align-items:start}
+@media(min-width:900px){.cards{grid-template-columns:1fr 1fr}}
+
+.card{
+  display:flex; flex-direction:column;
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--line); border-radius:24px; overflow:hidden;
+  scroll-margin-top:100px;
+  box-shadow:0 24px 50px -34px #000;
+  animation:up .5s ease both;
+  transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.card:hover{transform:translateY(-3px); border-color:#3f2d61; box-shadow:0 34px 60px -34px #000}
+.card:target{border-color:rgba(255,46,136,.5)}
+@keyframes up{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+
+.media{position:relative; aspect-ratio:4/3; background:#0f0a17; overflow:hidden}
+.media img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+  filter:saturate(.92) contrast(1.03) brightness(.92);
+  transition:transform .8s cubic-bezier(.2,.7,.3,1), filter .5s ease;
+}
+.card:hover .media img{transform:scale(1.045); filter:saturate(1.04) contrast(1.03) brightness(1)}
+.media__shade{
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(11,8,16,.42) 0%, rgba(11,8,16,0) 38%, rgba(11,8,16,.82) 100%);
+}
+.media__shade::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(150deg, rgba(255,46,136,.55), rgba(139,92,246,.55));
+  mix-blend-mode:soft-light; opacity:.75;
+}
+.media__badge{
+  position:absolute; top:12px; left:12px;
+  width:34px; height:34px; border-radius:11px;
+  display:grid; place-items:center; font-weight:800; font-size:.9rem;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  box-shadow:0 6px 18px -6px #000;
+}
+.media__tag{
+  position:absolute; top:14px; right:12px;
+  font-size:.66rem; font-weight:700; letter-spacing:.7px; text-transform:uppercase;
+  padding:5px 10px; border-radius:99px;
+  background:rgba(11,8,16,.72); border:1px solid var(--line); color:var(--muted);
+  backdrop-filter:blur(6px);
+}
+.body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px}
+.body h2{font-size:1.22rem; letter-spacing:-.2px}
+.apodo{
+  display:block; margin-top:5px;
+  font-size:.82rem; font-weight:600; font-style:italic;
+  letter-spacing:0; color:#ff8fc0;
+}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:9px}
+.chip{
+  font-size:.72rem; font-weight:600; padding:5px 11px; border-radius:99px;
+  background:#221a35; border:1px solid var(--line); color:#c8b8e6;
+}
+.chip--hi{background:rgba(255,46,136,.13); border-color:rgba(255,46,136,.4); color:#ff8fc0}
+
+h3.lbl{
+  font-size:.68rem; letter-spacing:1.3px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:9px; font-weight:700;
+}
+ol.pasos{list-style:none; counter-reset:p; display:flex; flex-direction:column; gap:8px}
+ol.pasos li{
+  counter-increment:p; position:relative; padding-left:32px;
+  font-size:.88rem; line-height:1.5; color:#d9cfee;
+}
+ol.pasos li::before{
+  content:counter(p); position:absolute; left:0; top:1px;
+  width:21px; height:21px; border-radius:50%;
+  display:grid; place-items:center;
+  font-size:.66rem; font-weight:800; color:#fff;
+  background:linear-gradient(135deg,#ff2e88,#8b5cf6);
+}
+.tip{
+  font-size:.83rem; line-height:1.5; color:#c9bbe6;
+  background:rgba(139,92,246,.09);
+  border-left:3px solid var(--purple);
+  padding:10px 14px; border-radius:0 12px 12px 0;
+}
+.sets{display:flex; flex-direction:column; gap:8px}
+.set{
+  display:flex; align-items:center; gap:11px; width:100%; text-align:left;
+  padding:12px 14px; border-radius:14px; cursor:pointer;
+  background:#1b1429; border:1px solid var(--line); color:#d6cbec;
+  font-size:.85rem; font-family:inherit; font-weight:600;
+  transition:.18s ease;
+}
+.set:hover{border-color:#453263; transform:translateX(2px)}
+.set__dot{
+  width:20px; height:20px; border-radius:50%; flex:none;
+  border:2px solid #3d2f57; display:grid; place-items:center;
+  transition:.18s;
+}
+.set__dot::after{content:"✓"; font-size:.66rem; color:#07130e; opacity:0; transform:scale(.4); transition:.18s}
+.set.done{background:rgba(46,230,168,.08); border-color:rgba(46,230,168,.45); color:#bff7e4}
+.set.done .set__dot{background:var(--ok); border-color:var(--ok)}
+.set.done .set__dot::after{opacity:1; transform:scale(1)}
+
+.foot{max-width:1120px; margin:0 auto; padding:6px 18px 26px; text-align:center}
+.foot p{font-size:.82rem; color:var(--muted); line-height:1.6}
+.foot__credit{font-size:.7rem; color:#6f6089; margin-top:14px}
+
+/* Temporizador */
+.rest{
+  position:fixed; left:0; right:0; bottom:0; z-index:90;
+  transform:translateY(130%);
+  transition:transform .32s cubic-bezier(.4,1.4,.5,1);
+  background:rgba(22,16,34,.96);
+  backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);
+  box-shadow:0 -18px 40px -20px #000;
+}
+.rest.show{transform:translateY(0)}
+.rest__fill{
+  height:4px; width:100%;
+  background:linear-gradient(90deg,var(--pink),var(--purple));
+  transition:width .95s linear;
+}
+.rest__in{
+  max-width:1120px; margin:0 auto; padding:14px 18px;
+  display:flex; align-items:center; gap:14px;
+}
+.rest__lbl{font-size:.72rem; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); font-weight:700}
+#restTime{font-size:1.5rem; font-variant-numeric:tabular-nums; letter-spacing:-.5px; min-width:64px}
+.rest__in .spacer{flex:1}
+.btn-mini{
+  font-family:inherit; font-size:.78rem; font-weight:700; cursor:pointer;
+  padding:9px 14px; border-radius:11px; white-space:nowrap;
+  background:#241a38; border:1px solid var(--line); color:#c8b8e6;
+  transition:.18s;
+}
+.btn-mini:hover{border-color:var(--pink); color:#fff}
+.btn-mini--x{background:rgba(255,46,136,.12); border-color:rgba(255,46,136,.4); color:#ff8fc0}
+@media(max-width:520px){
+  .rest__in{gap:10px; padding:12px 14px}
+  .rest__lbl{display:none}
+  #restTime{font-size:1.25rem; min-width:52px}
+  .btn-mini{padding:8px 11px; font-size:.72rem}
+}
+
+/* =========================================================
+   PORTADA DE LA RUTINA
+   ========================================================= */
+.hero{
+  position:relative; overflow:hidden; margin-bottom:26px;
+  padding:30px 26px 22px; border-radius:26px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(620px 280px at 0% 0%, rgba(255,46,136,.22), transparent 70%),
+    radial-gradient(560px 280px at 100% 5%, rgba(139,92,246,.24), transparent 70%),
+    linear-gradient(165deg,#1e1333,#110b1c);
+  box-shadow:0 30px 70px -50px #000, inset 0 1px 0 rgba(255,255,255,.05);
+  animation:up .6s ease both;
+}
+.hero__kicker{
+  font-size:.72rem; letter-spacing:2.2px; text-transform:uppercase;
+  color:#ff8fc0; font-weight:800;
+}
+.hero h2{
+  font-size:clamp(1.6rem, 4.4vw, 2.5rem); line-height:1.08;
+  letter-spacing:-.8px; margin:10px 0 10px;
+}
+.hero h2 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#ff2e88,#c4b5fd);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero__sub{color:var(--muted); font-size:.9rem; line-height:1.65; max-width:56ch}
+.hero__stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:22px}
+.stat{
+  padding:14px 16px; border-radius:16px;
+  background:rgba(255,255,255,.035); border:1px solid var(--line);
+}
+.stat strong{display:block; font-size:1.5rem; line-height:1.1; letter-spacing:-.6px; font-variant-numeric:tabular-nums}
+.stat span{font-size:.66rem; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); font-weight:700}
+@media(max-width:520px){
+  .hero{padding:24px 18px 20px}
+  .stat{padding:11px 12px}
+  .stat strong{font-size:1.22rem}
+  .stat span{font-size:.6rem; letter-spacing:.8px}
+}
+
+.quick{display:flex; gap:8px; overflow-x:auto; padding:20px 2px 2px; margin:0 -2px; scrollbar-width:none}
+.quick::-webkit-scrollbar{display:none}
+@media(min-width:900px){.quick{flex-wrap:wrap; overflow:visible}}
+.quick__item{
+  flex:none; display:inline-flex; align-items:center; gap:8px;
+  padding:7px 14px 7px 7px; border-radius:99px; text-decoration:none;
+  background:#1b1429; border:1px solid var(--line); color:#c9bbe6;
+  font-size:.78rem; font-weight:600; transition:.2s ease;
+}
+.quick__item b{
+  width:23px; height:23px; border-radius:50%; display:grid; place-items:center;
+  font-size:.7rem; font-weight:800;
+  background:rgba(255,46,136,.16); color:#ff8fc0; border:1px solid rgba(255,46,136,.35);
+}
+.quick__item:hover{border-color:var(--pink); color:#fff}
+.quick__item.is-active{
+  color:#fff; border-color:rgba(255,46,136,.5);
+  background:linear-gradient(135deg,rgba(255,46,136,.22),rgba(139,92,246,.22));
+}
+.quick__item.is-active b{background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; border-color:transparent}
+
+.progress__bar.is-full i{box-shadow:0 0 18px rgba(255,46,136,.75)}
+.progress__bar.is-full{background:#2a1c40}
+
+/* =========================================================
+   FELICITACIÓN FINAL
+   ========================================================= */
+.done{
+  position:fixed; inset:0; z-index:220;
+  display:grid; place-items:center; padding:24px;
+  background:rgba(7,4,13,.82); backdrop-filter:blur(10px);
+  opacity:0; visibility:hidden;
+  transition:opacity .4s ease, visibility .4s ease;
+}
+.done.show{opacity:1; visibility:visible}
+.done__confetti{position:absolute; inset:0; overflow:hidden; pointer-events:none}
+.done__box{
+  position:relative; z-index:1; text-align:center; max-width:430px;
+  padding:34px 28px 30px; border-radius:26px;
+  background:linear-gradient(165deg,#241636,#150d24);
+  border:1px solid rgba(255,46,136,.35);
+  box-shadow:0 40px 90px -40px #ff2e88, inset 0 1px 0 rgba(255,255,255,.06);
+  transform:scale(.94); transition:transform .45s cubic-bezier(.4,1.4,.5,1);
+}
+.done.show .done__box{transform:scale(1)}
+.done__emoji{font-size:3rem; line-height:1}
+.done__box h2{font-size:1.7rem; letter-spacing:-.5px; margin:12px 0 8px}
+.done__box p{color:var(--muted); font-size:.9rem; line-height:1.6; margin-bottom:22px}
+.done__box .intro__btn{font-size:.95rem; padding:14px 28px}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0b0810}
+::-webkit-scrollbar-thumb{background:#2c2142; border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:#3f2d61}
+::selection{background:rgba(255,46,136,.35); color:#fff}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ INTRO CUMPLEAÑOS ============ -->
+<div id="intro" class="intro">
+  <canvas id="fw"></canvas>
+  <div id="confettiLayer" class="confetti-layer"></div>
+  <div class="pompoms">
+    <span class="pompom pompom--l"></span>
+    <span class="pompom pompom--r"></span>
+  </div>
+  <div class="intro__content">
+    <p class="intro__kicker">🎉 ¡Feliz cumpleaños! 🎉</p>
+    <h1 class="intro__title">Happy Birthday<br>Isa</h1>
+    <p class="intro__sub">Tu rutina de glúteo y pierna te espera 🍑<br>¡Hoy entrenamos con todo!</p>
+    <button id="startBtn" class="intro__btn">Comenzar rutina →</button>
+  </div>
+</div>
+
+<!-- ============ RUTINA ============ -->
+<header class="top">
+  <div class="top__in">
+    <div class="brand">
+      <span class="brand__ico">🍑</span>
+      <div>
+        <h1>Rutina Glúteo &amp; Pierna</h1>
+        <p>Guía paso a paso · 5 ejercicios · 14 series</p>
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress__bar"><i id="progressFill"></i></div>
+      <span id="progressTxt">0 / 14</span>
+      <button id="reset" class="btn-ghost" title="Reiniciar rutina">↺</button>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="wrap"></main>
+
+<footer class="foot">
+  <p>🔥 Al terminar: 5–8 min de estiramiento suave de glúteo, isquiotibiales y cuádriceps.</p>
+  <p class="foot__credit">Hecho con 💖 para Isa · Fotos: free-exercise-db (dominio público)</p>
+</footer>
+
+<div id="done" class="done" role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+  <div id="doneConfetti" class="done__confetti"></div>
+  <div class="done__box">
+    <div class="done__emoji">🎉</div>
+    <h2 id="doneTitle">¡Rutina completada!</h2>
+    <p id="doneSub">Isa, te luciste 💪🍑<br>Ahora toca estirar y celebrar.</p>
+    <button id="doneClose" class="intro__btn">Cerrar</button>
+  </div>
+</div>
+
+<div id="restBar" class="rest" aria-live="polite">
+  <div class="rest__fill" id="restFill"></div>
+  <div class="rest__in">
+    <span class="rest__lbl">Descanso</span>
+    <strong id="restTime">0s</strong>
+    <span class="spacer"></span>
+    <button id="restAdd" class="btn-mini">+15s</button>
+    <button id="restSkip" class="btn-mini btn-mini--x">Saltar ✕</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   1) INTRO: FUEGOS ARTIFICIALES + CONFETI + POMPONES
+   ========================================================= */
+(function initBirthday(){
+  const intro        = document.getElementById("intro");
+  const canvas       = document.getElementById("fw");
+  const ctx          = canvas.getContext("2d");
+  const startBtn     = document.getElementById("startBtn");
+  const confettiLyr  = document.getElementById("confettiLayer");
+
+  let W = 0, H = 0;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + "px";
+    canvas.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  const COLORS = ["#ff2e88","#ff6bb0","#ffd166","#8b5cf6","#c4b5fd",
+                  "#2ee6a8","#fbbf24","#fb7185","#a78bfa","#f472b6"];
+
+  const rockets  = [];
+  const sparks   = [];
+  let running    = true;
+  let lastLaunch = 0;
+  let rafId      = null;
+
+  function launch(){
+    const x = W * (0.12 + Math.random() * 0.76);
+    const targetY = H * (0.10 + Math.random() * 0.35);
+    rockets.push({
+      x, y: H + 8,
+      vy: -(7 + Math.random() * 4),          // sube a velocidad constante
+      targetY,
+      color: COLORS[(Math.random() * COLORS.length) | 0]
+    });
+  }
+
+  function explode(x, y, color){
+    const n = 55 + ((Math.random() * 40) | 0);
+    for (let i = 0; i < n; i++){
+      const a  = (Math.PI * 2 * i) / n + Math.random() * 0.35;
+      const sp = 1.6 + Math.random() * 4.8;
+      sparks.push({
+        x, y,
+        vx: Math.cos(a) * sp,
+        vy: Math.sin(a) * sp,
+        life: 1,
+        decay: 0.008 + Math.random() * 0.012,
+        size: 1.4 + Math.random() * 1.9,
+        color: Math.random() < 0.28
+          ? COLORS[(Math.random() * COLORS.length) | 0]
+          : color
+      });
+    }
+  }
+
+  let lastT = performance.now();
+
+  function frame(t){
+    const dt = Math.min((t - lastT) / 16.67, 2.5);
+    lastT = t;
+
+    if (running){
+      if (t - lastLaunch > 520 && rockets.length < 6){
+        launch();
+        lastLaunch = t;
+      }
+
+      // cohetes
+      for (let i = rockets.length - 1; i >= 0; i--){
+        const r = rockets[i];
+        r.y += r.vy * dt;
+        // estela
+        if (Math.random() < 0.9){
+          sparks.push({
+            x: r.x + (Math.random() - 0.5) * 1.5,
+            y: r.y,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: 0.5 + Math.random() * 0.7,
+            life: 0.6,
+            decay: 0.05,
+            size: 1,
+            color: r.color
+          });
+        }
+        if (r.y <= r.targetY){
+          explode(r.x, r.y, r.color);
+          rockets.splice(i, 1);
+        }
+      }
+
+      // chispas
+      for (let i = sparks.length - 1; i >= 0; i--){
+        const p = sparks[i];
+        p.x  += p.vx * dt;
+        p.y  += p.vy * dt;
+        p.vy += 0.045 * dt;
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+        p.life -= p.decay * dt;
+        if (p.life <= 0) sparks.splice(i, 1);
+      }
+    }
+
+    // dibujar
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+
+    for (const p of sparks){
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    for (const r of rockets){
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = "#fff";
+      ctx.shadowBlur = 14;
+      ctx.shadowColor = r.color;
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+    ctx.globalCompositeOperation = "source-over";
+
+    rafId = requestAnimationFrame(frame);
+  }
+  rafId = requestAnimationFrame(frame);
+
+  // Confeti DOM
+  function spawnConfetti(){
+    const N = 46;
+    for (let i = 0; i < N; i++){
+      const c = document.createElement("span");
+      c.className = "confetti";
+      c.style.left = (Math.random() * 100) + "%";
+      c.style.background = COLORS[(Math.random() * COLORS.length) | 0];
+      const dur = 4 + Math.random() * 4.5;
+      c.style.animationDuration = dur + "s";
+      c.style.animationDelay = (-Math.random() * dur) + "s";
+      c.style.width  = (6 + Math.random() * 7) + "px";
+      c.style.height = (10 + Math.random() * 10) + "px";
+      confettiLyr.appendChild(c);
+    }
+  }
+  spawnConfetti();
+
+  // Iniciar rutina
+  startBtn.addEventListener("click", () => {
+    intro.classList.add("hide");
+    setTimeout(() => {
+      intro.style.display = "none";
+      cancelAnimationFrame(rafId);
+      running = false;
+      window.scrollTo(0, 0);
+    }, 720);
+  });
+})();
+
+/* =========================================================
+   2) RUTINA
+   ========================================================= */
+const RUTINA = [
+  {
+    id: "abductores",
+    nombre: "Máquina de abductores",
+    apodo: "el humillante",
+    bloque: "Calentamiento",
+    emoji: "🦵",
+    img: "img/abductores.jpg",
+    descanso: 45,
+    chips: ["2 series", "15 reps", "Peso ligero"],
+    serieLabels: ["Serie 1 · 15 reps", "Serie 2 · 15 reps"],
+    pasos: [
+      "Ajusta el asiento para que las almohadillas queden a la altura de las rodillas y la espalda quede apoyada en el respaldo.",
+      "Siéntate con la espalda recta, el abdomen contraído y los pies bien apoyados.",
+      "Abre las piernas hacia afuera de forma lenta y controlada hasta donde te sea cómodo.",
+      "Mantén 1 segundo arriba apretando el glúteo.",
+      "Regresa en 2–3 segundos, sin dejar que el peso choque de golpe.",
+      "Descansa 45 segundos entre series."
+    ],
+    tip: "Es solo calentamiento: usa un peso ligero y prioriza la técnica. No rebotes ni uses impulso."
+  },
+  {
+    id: "hipthrust",
+    nombre: "Hip thrust en máquina",
+    apodo: "aiiiiiii inserte sonido",
+    bloque: "Activación",
+    emoji: "🏋️‍♀️",
+    img: "img/hip-thrust.jpg",
+    descanso: 60,
+    chips: ["3 series", "10 / 12 reps", "Peso progresivo"],
+    serieLabels: [
+      "Serie 1 · 10 reps · peso liviano",
+      "Serie 2 · 12 reps · peso pesado",
+      "Serie 3 · 12 reps · peso pesado"
+    ],
+    pasos: [
+      "Ajusta el respaldo a la altura de la cadera y coloca la almohadilla sobre el pliegue de la ingle.",
+      "Apoya la espalda alta en el respaldo y los pies al ancho de hombros.",
+      "Empuja con los talones y extiende la cadera hasta alinear rodillas–cadera–hombros.",
+      "Aprieta el glúteo arriba 1–2 segundos, sin arquear la zona lumbar.",
+      "Baja controlado hasta sentir el estiramiento, sin soltar la tensión.",
+      "Serie 1 con peso liviano. En las series 2 y 3 sube el peso y haz 12 repeticiones."
+    ],
+    tip: "Mentón ligeramente hacia abajo y mirada al frente. Empuja con los talones, no con la punta de los pies."
+  },
+  {
+    id: "patada",
+    nombre: "Patada de glúteo cruzada",
+    apodo: "la gente me ve las nalgas dio mio",
+    bloque: "Glúteo medio",
+    emoji: "🦵",
+    img: "img/patada-cruzada.jpg",
+    descanso: 45,
+    chips: ["3 series", "12 reps por lado", "Polea baja"],
+    serieLabels: [
+      "Serie 1 · 12 reps por lado",
+      "Serie 2 · 12 reps por lado",
+      "Serie 3 · 12 reps por lado"
+    ],
+    pasos: [
+      "Coloca la tobillera en el pie CONTRARIO al de apoyo (si te apoyas en la derecha, la banda va en la izquierda) y engánchala a la polea baja.",
+      "Sujétate al marco de la polea y apoya todo el peso en una pierna, con el torso ligeramente inclinado.",
+      "Lleva la pierna de trabajo hacia atrás y en diagonal, cruzando ligeramente hacia el lado contrario (como dibujando una línea cruzada).",
+      "Aprieta el glúteo arriba 1 segundo, sin arquear la espalda ni girar la cadera.",
+      "Regresa lento y controlado, sin dejar que el peso arrastre la pierna.",
+      "Haz 12 repeticiones, cambia de lado y repite hasta completar 3 series."
+    ],
+    tip: "Movimiento corto y preciso. Si balanceas el cuerpo, baja el peso: la calidad manda."
+  },
+  {
+    id: "bulgara",
+    nombre: "Sentadilla búlgara",
+    apodo: "ya no aguanto mas",
+    bloque: "Fuerza unilateral",
+    emoji: "🦵",
+    img: "img/bulgara.jpg",
+    descanso: 60,
+    chips: ["3 series", "10 con peso + 10 sin peso", "Por pierna"],
+    serieLabels: [
+      "Serie 1 · 10 con peso + 10 sin peso",
+      "Serie 2 · 10 con peso + 10 sin peso",
+      "Serie 3 · 10 con peso + 10 sin peso"
+    ],
+    pasos: [
+      "Apoya el empeine del pie trasero sobre un banco y coloca el pie delantero un paso al frente.",
+      "Toma el peso de 10 kg a la altura del pecho o a los costados.",
+      "Baja en vertical flexionando la rodilla delantera hasta que el muslo quede cerca de paralelo al piso.",
+      "La rodilla delantera debe quedar alineada con el pie, sin sobrepasar la punta.",
+      "Empuja con el talón delantero para subir y aprieta el glúteo arriba.",
+      "Haz 10 repeticiones con peso y, sin descansar, 10 más sin peso. Completa 3 series y cambia de pierna."
+    ],
+    tip: "Inclina ligeramente el torso hacia adelante para enfatizar el glúteo. Si el banco es muy alto, baja el pie trasero."
+  },
+  {
+    id: "sumo",
+    nombre: "Peso muerto sumo con barra",
+    apodo: "diosito soy yo de nuevo",
+    bloque: "Fuerza global",
+    emoji: "🏋️‍♀️",
+    img: "img/peso-muerto-sumo.jpg",
+    descanso: 75,
+    chips: ["3 series", "12 reps", "Barra"],
+    serieLabels: [
+      "Serie 1 · 12 reps",
+      "Serie 2 · 12 reps",
+      "Serie 3 · 12 reps"
+    ],
+    pasos: [
+      "Separa los pies más que el ancho de los hombros y gira las puntas hacia afuera unos 45°.",
+      "Coloca la barra pegada a las espinillas y agarra por dentro de las piernas.",
+      "Espalda recta, pecho arriba, cadera atrás y mirada al frente.",
+      "Empuja el piso con los talones y extiende cadera y rodillas al mismo tiempo.",
+      "Arriba: aprieta los glúteos sin hiperextender la espalda.",
+      "Baja controlado llevando la cadera hacia atrás. 12 repeticiones × 3 series."
+    ],
+    tip: "Respira profundo y bloquea el abdomen antes de cada repetición. La barra siempre pegada al cuerpo y las rodillas siguiendo la dirección de las puntas de los pies."
+  }
+];
+
+/* Placeholder SVG si falta la imagen */
+function ph(nombre, emoji){
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1130"/><stop offset="1" stop-color="#2a1140"/>
+    </linearGradient></defs>
+    <rect width="800" height="520" fill="url(#g)"/>
+    <circle cx="400" cy="215" r="120" fill="#ffffff" opacity="0.04"/>
+    <text x="400" y="255" font-size="130" text-anchor="middle">${emoji}</text>
+    <text x="400" y="345" font-size="30" fill="#c9b6e4" font-family="sans-serif" text-anchor="middle">${nombre}</text>
+    <text x="400" y="385" font-size="18" fill="#7d6d9e" font-family="sans-serif" text-anchor="middle">agrega tu imagen en img/</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg).replace(/'/g,"%27");
+}
+
+const KEY = "rutina-gluteo-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+const save = () => localStorage.setItem(KEY, JSON.stringify(state));
+const totalSeries = RUTINA.reduce((a, ex) => a + ex.serieLabels.length, 0);
+
+const app = document.getElementById("app");
+
+function heroHTML(){
+  return `
+  <section class="hero">
+    <p class="hero__kicker">🎀 Rutina de hoy</p>
+    <h2>Vamos por ese <em>🍑</em></h2>
+    <p class="hero__sub">Marca cada serie completada y el descanso se activa solo. Tu progreso se guarda en este dispositivo, así que puedes cerrar y volver cuando quieras.</p>
+    <div class="hero__stats">
+      <div class="stat"><strong>${RUTINA.length}</strong><span>Ejercicios</span></div>
+      <div class="stat"><strong>${totalSeries}</strong><span>Series</span></div>
+      <div class="stat"><strong>~55</strong><span>Minutos</span></div>
+    </div>
+    <nav class="quick" aria-label="Ir a un ejercicio">
+      ${RUTINA.map((ex, i) => `
+        <a class="quick__item" href="#ex-${ex.id}" title="${ex.nombre} (${ex.apodo})"><b>${i + 1}</b>${ex.nombre}</a>`).join("")}
+    </nav>
+  </section>`;
+}
+
+function cardHTML(ex, n){
+  const sets = ex.serieLabels.map((label, i) => {
+    const done = !!state[ex.id + "-" + i];
+    return `<button class="set ${done ? "done" : ""}" data-id="${ex.id}" data-i="${i}" data-rest="${ex.descanso}">
+              <span class="set__dot"></span>
+              <span class="set__txt">${label}</span>
+            </button>`;
+  }).join("");
+  const pasos = ex.pasos.map(p => `<li>${p}</li>`).join("");
+  const chips = ex.chips.map((c, i) => `<span class="chip ${i === 0 ? "chip--hi" : ""}">${c}</span>`).join("");
+
+  return `
+  <article class="card" id="ex-${ex.id}">
+    <div class="media">
+      <img src="${ex.img}" alt="${ex.nombre}" loading="lazy" decoding="async"
+           onerror="this.onerror=null;this.src='${ph(ex.nombre, ex.emoji)}'">
+      <span class="media__shade"></span>
+      <span class="media__badge">${n}</span>
+      <span class="media__tag">${ex.bloque}</span>
+    </div>
+    <div class="body">
+      <div>
+        <h2>${ex.nombre}<span class="apodo">(${ex.apodo})</span></h2>
+        <div class="chips">${chips}</div>
+      </div>
+      <div>
+        <h3 class="lbl">Paso a paso</h3>
+        <ol class="pasos">${pasos}</ol>
+      </div>
+      <div class="tip">💡 ${ex.tip}</div>
+      <div>
+        <h3 class="lbl">Marca tus series</h3>
+        <div class="sets">${sets}</div>
+      </div>
+    </div>
+  </article>`;
+}
+
+function render(){
+  app.innerHTML = heroHTML() + `<div class="cards">${RUTINA.map((ex, i) => cardHTML(ex, i + 1)).join("")}</div>`;
+  updateProgress();
+  initScrollSpy();
+}
+
+const fill = document.getElementById("progressFill");
+const txt  = document.getElementById("progressTxt");
+const progressBar = document.querySelector(".progress__bar");
+
+function updateProgress(canCelebrate){
+  const done = Object.values(state).filter(Boolean).length;
+  const pct  = totalSeries ? (done / totalSeries) * 100 : 0;
+  fill.style.width = pct + "%";
+  txt.textContent = `${done} / ${totalSeries}`;
+  progressBar.classList.toggle("is-full", done === totalSeries);
+
+  if (canCelebrate && done === totalSeries) celebrate();
+  if (done < totalSeries) celebrated = false;
+}
+
+/* Felicitación al completar todo */
+const doneLayer  = document.getElementById("done");
+const doneConfetti = document.getElementById("doneConfetti");
+const doneSub    = document.getElementById("doneSub");
+let celebrated = false;
+
+function celebrate(){
+  if (celebrated) return;
+  celebrated = true;
+  doneSub.innerHTML = `${totalSeries} de ${totalSeries} series. Isa, te luciste 💪🍑<br>Ahora toca estirar y celebrar.`;
+  doneLayer.classList.add("show");
+  document.body.style.overflow = "hidden";
+  spawnBurst(doneConfetti);
+}
+
+function closeDone(){
+  doneLayer.classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function spawnBurst(layer){
+  const COLORS = ["#ff2e88","#ff6bb0","#ffd166","#8b5cf6","#c4b5fd","#2ee6a8","#f472b6"];
+  layer.innerHTML = "";
+  for (let i = 0; i < 90; i++){
+    const c = document.createElement("span");
+    c.className = "confetti";
+    c.style.left = (Math.random() * 100) + "%";
+    c.style.background = COLORS[(Math.random() * COLORS.length) | 0];
+    const dur = 2.6 + Math.random() * 2.6;
+    c.style.animationDuration = dur + "s";
+    c.style.animationDelay = (-Math.random() * dur) + "s";
+    c.style.width  = (5 + Math.random() * 6) + "px";
+    c.style.height = (9 + Math.random() * 10) + "px";
+    layer.appendChild(c);
+  }
+}
+
+document.getElementById("doneClose").addEventListener("click", closeDone);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDone();
+});
+
+/* Resalta el ejercicio visible en la navegación rápida */
+let spy = null;
+function initScrollSpy(){
+  if (!("IntersectionObserver" in window)) return;
+  if (spy) spy.disconnect();
+  const links = [...app.querySelectorAll(".quick__item")];
+  const cards = [...app.querySelectorAll(".card")];
+  const visible = new Set();
+  spy = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) visible.add(en.target.id);
+      else visible.delete(en.target.id);
+    });
+    const activeId = visible.values().next().value || null;
+    links.forEach((l) => l.classList.toggle("is-active", activeId !== null && l.getAttribute("href") === "#" + activeId));
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  cards.forEach((c) => spy.observe(c));
+}
+
+app.addEventListener("click", (e) => {
+  const btn = e.target.closest(".set");
+  if (!btn) return;
+  const key = btn.dataset.id + "-" + btn.dataset.i;
+  const was = !!state[key];
+  if (was){ delete state[key]; btn.classList.remove("done"); }
+  else {
+    state[key] = true;
+    btn.classList.add("done");
+    startRest(parseInt(btn.dataset.rest, 10));
+  }
+  save();
+  updateProgress(true);
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("¿Reiniciar toda la rutina?")) return;
+  state = {}; save(); render(); stopRest();
+  closeDone();
+  celebrated = false;
+});
+
+/* Temporizador */
+const restBar  = document.getElementById("restBar");
+const restFill = document.getElementById("restFill");
+const restTime = document.getElementById("restTime");
+let timerId = null, remaining = 0, total = 0;
+
+function startRest(seg){
+  total = remaining = seg;
+  restBar.classList.add("show");
+  paintTimer();
+  clearInterval(timerId);
+  timerId = setInterval(tick, 1000);
+}
+function tick(){
+  remaining--;
+  if (remaining <= 0){ stopRest(); beep(); return; }
+  paintTimer();
+}
+function paintTimer(){
+  restTime.textContent = remaining + "s";
+  restFill.style.transition = "none";
+  restFill.style.width = (remaining / total * 100) + "%";
+  requestAnimationFrame(() => { restFill.style.transition = "width .95s linear"; });
+}
+function stopRest(){
+  clearInterval(timerId); timerId = null;
+  restBar.classList.remove("show");
+}
+document.getElementById("restAdd").addEventListener("click", () => {
+  if (!timerId) return;
+  remaining += 15; total = Math.max(total, remaining); paintTimer();
+});
+document.getElementById("restSkip").addEventListener("click", stopRest);
+
+function beep(){
+  if (navigator.vibrate) navigator.vibrate([120, 70, 120]);
+  try{
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    const ctx = new Ctx();
+    [0, 0.28].forEach(offset => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = "sine"; o.frequency.value = 880;
+      const t = ctx.currentTime + offset;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.28, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+      o.start(t); o.stop(t + 0.24);
+    });
+  }catch(e){}
+}
+
+render();
+</script>
+</body>
+</html>
