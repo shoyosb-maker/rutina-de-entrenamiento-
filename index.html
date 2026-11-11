@@ -209,11 +209,31 @@ body{
 }
 .body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px}
 .body h2{font-size:1.22rem; letter-spacing:-.2px}
+.apodo-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:6px}
 .apodo{
-  display:block; margin-top:5px;
   font-size:.82rem; font-weight:600; font-style:italic;
   letter-spacing:0; color:#ff8fc0;
 }
+.audio-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px}
+.audio-hint{font-size:.78rem; line-height:1.45; color:#a294c0}
+.play{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:5px 13px 5px 5px; border-radius:99px; cursor:pointer;
+  font-family:inherit; font-size:.72rem; font-weight:700; color:#fff;
+  border:1px solid rgba(255,46,136,.45);
+  background:linear-gradient(135deg, rgba(255,46,136,.26), rgba(139,92,246,.26));
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.play:hover{transform:translateY(-1px); border-color:var(--pink); box-shadow:0 10px 22px -14px var(--pink)}
+.play__ico{
+  width:23px; height:23px; border-radius:50%; flex:none;
+  display:grid; place-items:center; font-size:.6rem; line-height:1;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  box-shadow:0 4px 12px -6px var(--pink);
+}
+.play.is-playing{border-color:rgba(46,230,168,.55); background:linear-gradient(135deg, rgba(46,230,168,.22), rgba(139,92,246,.24))}
+.play.is-playing .play__ico{background:linear-gradient(135deg,var(--ok),#17a67c); color:#04231a; animation:pulse .9s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
 .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:9px}
 .chip{
   font-size:.72rem; font-weight:600; padding:5px 11px; border-radius:99px;
@@ -654,7 +674,7 @@ const RUTINA = [
   {
     id: "abductores",
     nombre: "Máquina de abductores",
-    apodo: "el humillante",
+    apodo: "qué máquina tan humillante",
     bloque: "Calentamiento",
     emoji: "🦵",
     img: "img/abductores.jpg",
@@ -674,7 +694,8 @@ const RUTINA = [
   {
     id: "hipthrust",
     nombre: "Hip thrust en máquina",
-    apodo: "aiiiiiii inserte sonido",
+    apodo: "aiiiii",
+    audio: "img/audio-hip-thrust.mp3",
     bloque: "Activación",
     emoji: "🏋️‍♀️",
     img: "img/hip-thrust.jpg",
@@ -832,7 +853,16 @@ function cardHTML(ex, n){
     </div>
     <div class="body">
       <div>
-        <h2>${ex.nombre}<span class="apodo">(${ex.apodo})</span></h2>
+        <h2>${ex.nombre}</h2>
+        <div class="apodo-row">
+          <span class="apodo">(${ex.apodo})</span>
+        </div>
+        ${ex.audio ? `<div class="audio-row">
+          <span class="audio-hint">toca el botón para reproducir el audio</span>
+          <button class="play" data-audio="${ex.audio}" aria-label="Reproducir audio" aria-pressed="false">
+            <span class="play__ico">▶</span><span class="play__txt">Reproducir</span>
+          </button>
+        </div>` : ""}
         <div class="chips">${chips}</div>
       </div>
       <div>
@@ -849,6 +879,7 @@ function cardHTML(ex, n){
 }
 
 function render(){
+  stopAudio();
   app.innerHTML = heroHTML() + `<div class="cards">${RUTINA.map((ex, i) => cardHTML(ex, i + 1)).join("")}</div>`;
   updateProgress();
   initScrollSpy();
@@ -929,6 +960,55 @@ function initScrollSpy(){
   }, { rootMargin: "-45% 0px -50% 0px" });
   cards.forEach((c) => spy.observe(c));
 }
+
+/* Reproductor del audio del hip thrust */
+let audioPlayer = null, audioSrc = null;
+
+function setPlayState(btn, playing){
+  if (!btn) return;
+  btn.classList.toggle("is-playing", playing);
+  btn.setAttribute("aria-pressed", playing ? "true" : "false");
+  btn.querySelector(".play__ico").textContent = playing ? "❚❚" : "▶";
+  btn.querySelector(".play__txt").textContent = playing ? "Pausar" : "Reproducir";
+}
+function resetPlayButtons(){
+  app.querySelectorAll(".play").forEach((b) => setPlayState(b, false));
+}
+function stopAudio(){
+  if (!audioPlayer) return;
+  audioPlayer.pause();
+  audioSrc = null;
+}
+
+app.addEventListener("click", (e) => {
+  const btn = e.target.closest(".play");
+  if (!btn) return;
+
+  if (!audioPlayer){
+    audioPlayer = new Audio();
+    audioPlayer.preload = "auto";
+    audioPlayer.addEventListener("ended", resetPlayButtons);
+    audioPlayer.addEventListener("pause", () => { if (!audioPlayer.ended) resetPlayButtons(); });
+    audioPlayer.addEventListener("error", () => {
+      resetPlayButtons();
+      const b = app.querySelector(".play");
+      if (b) b.querySelector(".play__txt").textContent = "Audio no disponible";
+    });
+  }
+
+  if (audioSrc === btn.dataset.audio && !audioPlayer.paused){
+    audioPlayer.pause();
+    return;
+  }
+  if (audioSrc !== btn.dataset.audio){
+    audioSrc = btn.dataset.audio;
+    audioPlayer.src = audioSrc;
+  }
+
+  resetPlayButtons();
+  try { audioPlayer.currentTime = 0; } catch(err){}
+  audioPlayer.play().then(() => setPlayState(btn, true)).catch(() => {});
+});
 
 app.addEventListener("click", (e) => {
   const btn = e.target.closest(".set");
